@@ -1,23 +1,31 @@
 #include <SFML/Graphics.hpp>
+#include "Manager.h"
 
-int main()
-{
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+int main() {
 
-    while (window.isOpen())
+	// Let's make our window
+	sf::RenderWindow* window = new sf::RenderWindow(sf::VideoMode(800, 600), "A Game!");
+
+	// Set the framerate to 60fps
+	window->setFramerateLimit(60);
+
+	// Our game manager
+	Manager* manager = new Manager(window);
+	
+	// while the game is open
+    while (window->isOpen())
     {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
+		// update the manager
+		manager->update();
 
-        window.clear();
-        window.draw(shape);
-        window.display();
+		// clear the display
+        window->clear();
+
+		// draw whatever the manager has to draw
+		manager->draw();
+
+		// draw the display
+        window->display();
     }
 
     return 0;
