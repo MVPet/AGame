@@ -8,8 +8,14 @@ Manager::Manager(sf::RenderWindow* app) {
 // Called once per frame
 void Manager::update() {
 
-	checkEvent();
-	checkKeyboard();
+	elapsed += clock.restart();
+
+	if(elapsed >= sf::seconds(1.0f / 60.0f))
+	{
+		checkEvent();
+		checkKeyboard();
+		elapsed = sf::seconds(0.0f);
+	}
 }
 
 void Manager::draw() {

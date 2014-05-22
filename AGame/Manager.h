@@ -17,6 +17,8 @@ private:
 	sf::Keyboard keyboard;
 	sf::Event event;
 	sf::RenderWindow* window;
+	sf::Clock clock;
+	sf::Time elapsed;
 
 };
 
