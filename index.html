@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Beat &#39;em Up by MVPet</title>
+    <title>Fighting Game by MVPet</title>
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -31,27 +31,38 @@
 
       <section>
         <div id="title">
-          <h1>Beat &#39;em Up</h1>
-          <p>A beat &#39;em up using SFML</p>
+          <h1>Fighting Game</h1>
+          <p>A fighting game using SFML</p>
           <hr>
           <span class="credits left">Project maintained by <a href="https://github.com/MVPet">MVPet</a></span>
           <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
         </div>
 
         <h3>
-<a name="welcome-to-the-page-for-beat-em-up" class="anchor" href="#welcome-to-the-page-for-beat-em-up"><span class="octicon octicon-link"></span></a>Welcome to the page for Beat 'em Up.</h3>
+<a name="welcome-to-the-page-for-fighting-game" class="anchor" href="#welcome-to-the-page-for-fighting-game"><span class="octicon octicon-link"></span></a>Welcome to the page for Fighting Game.</h3>
 
 <p>This is a project that was recently started as a break from Unity and C#.
 It is a game that is made with C++ and the SFML API.</p>
 
-<p>The game will be a in the style of 90's beat 'em ups and details are still being finalized in terms of art design and gameplay.</p>
+<p>The game has gone through a few different concepts, such as a Beat 'em Up, but it is settled that it will be a fighting game to test out some concepts which will then be used in a Beat 'em Up later.</p>
+
+<p>Current plans are for just one fighter to test out concepts, and gameplay mechanics are not quite set in stone, but there is a plan for them.</p>
 
 <p>Currently not in a playable state and is still being developed.</p>
 
 <h3>
 <a name="updates" class="anchor" href="#updates"><span class="octicon octicon-link"></span></a>Updates:</h3>
 
-<pre><code>May 22, 2014
+<pre><code>June 3, 2014
+- Added in some new classes
+     - Game.cpp, a rewrite of manager class
+     - TexureManager.cpp, used for objects to store their used textures
+     - Fighter.cpp, base class for the fighters, not complete yet
+- Updated main.cpp to use less code, moved most of it to Game.cpp
+- Kept older classes and unused classes, will be cleansed out later.
+- Basic graphics drawing available, test stand sprite included to test it.
+
+May 22, 2014
 - Added in Animation class
 - Added in fixed update timestep of ~60fps
 
