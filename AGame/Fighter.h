@@ -1,0 +1,16 @@
+#ifndef _FIGHTER
+#define _FIGHTER
+
+#include <SFML/System/Vector2.hpp>
+
+class Fighter
+{
+public:
+	void			setVelocity(sf::Vector2f velocity);
+	void			setVelocity(float vx, float vy);
+	sf::Vector2f	getVelocity() const;
+private:
+	sf::Vector2f	mVelocity;
+};
+
+#endif
