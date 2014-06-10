@@ -1,45 +1,40 @@
 #include "Animation.h"
 
-Animation::Animation(std::string cName, std::string aName, int frames, bool isLooping) {
-	charName = cName;
-	animName = aName;
+Animation::Animation(Animations::ID id, int frames, bool isLooping, sf::Texture& texture) {
 	numOfFrames = frames;
 	frameIndex = 0;
 	updateTime = 0;
 	loop = isLooping;
 
-	load();
+	sprite.setTexture(texture);
+
+	width = texture.getSize().x / frames;
+	height = texture.getSize().y;
+
+	sprite.setTextureRect(sf::IntRect((frameIndex * width), 0, width, height));
+
+	boundBox.top = 100.f;
+	boundBox.left = 100.f;
+	boundBox.width = sprite.getLocalBounds().width;
+	boundBox.height = sprite.getLocalBounds().height;
 }
 
-void Animation::update() {
+void Animation::update(sf::Vector2f pos) {
+
+	sprite.setPosition(pos);
+
 	frameIndex++;
 
-	if(frameIndex > numOfFrames && loop)
+	if(frameIndex >= numOfFrames && loop)
 		frameIndex = 0;
+	else
+		frameIndex = numOfFrames - 1;
 
 	sprite.setTextureRect(sf::IntRect((frameIndex * width), 0, width, height));
 }
 
-void Animation::load() {
-	sf::Texture* texture;
-
-	if(texture->loadFromFile("Texture/Chatacrers/" + charName + "/" + animName + ".png"))
-	{
-		std::cout <<"Texture not found!" << std::endl;
-		return;
-	} else
-		sprite.setTexture(*texture);
-
-	height = texture->getSize().y;
-	width = (texture->getSize().x / numOfFrames);
-
-	sprite.setTextureRect(sf::IntRect((frameIndex * width), 0, width, height));
-
-	delete(texture);
-}
-
-void Animation::draw(sf::RenderWindow &app)
-{ app.draw(sprite); }
+void Animation::draw(sf::RenderWindow* window)
+{ window->draw(sprite); }
 
 int Animation::getHeight()
 { return height; }

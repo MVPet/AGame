@@ -6,7 +6,7 @@
 
 namespace Textures
 {
-	enum ID { Yu, Background};
+	enum ID { Stand, Background};
 }
 
 class TextureHolder

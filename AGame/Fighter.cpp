@@ -1,17 +1,11 @@
 #include "Fighter.h"
 
-void Fighter::setVelocity(sf::Vector2f velocity)
+void Fighter::setVelocity(float vx)
 {
-	mVelocity = velocity;
+	velocity = vx;
 }
 
-void Fighter::setVelocity(float vx, float vy)
+float Fighter::getVelocity() const
 {
-	mVelocity.x = vx;
-	mVelocity.y = vy;
-}
-
-sf::Vector2f Fighter::getVelocity() const
-{
-	return mVelocity;
+	return velocity;
 }

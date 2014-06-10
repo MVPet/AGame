@@ -3,6 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "TextureHolder.h"
+#include "Yu.h"
 
 class Game
 {
@@ -12,19 +13,17 @@ public:
 
 private:
 	void	processEvents();
-	void	handlePlayerInput(sf::Keyboard::Key , bool);
+	//void	handlePlayerInput(sf::Keyboard::Key , bool);
 	void	update(sf::Time);
 	void	render();
 
 private:
 	sf::RenderWindow	mWindow;
-	sf::Texture			mTexture;
-	sf::Sprite			mPlayer;
+	Fighter*			p1;
 	bool				mIsMovingUp;
 	bool				mIsMovingDown;
 	bool				mIsMovingLeft;
 	bool				mIsMovingRight;
-	float				playerSpeed;
 	sf::Time			TimePerFrame;
 	TextureHolder		textures;
 

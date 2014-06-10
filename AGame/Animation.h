@@ -5,29 +5,29 @@
 #include <string>
 #include <iostream>
 
+namespace Animations
+{
+	enum ID { Stand };
+}
+
 class Animation {
 
 public:
-	int getWidth();
-	int getHeight();
-
-	Animation::Animation(std::string, std::string, int, bool);
-	void update();
-	void draw(sf::RenderWindow &app);
+			Animation(Animations::ID, int, bool, sf::Texture& texture);
+	int		getWidth();
+	int		getHeight();
+	void	update(sf::Vector2f pos);
+	void	draw(sf::RenderWindow*);
 
 private:
-	sf::Sprite sprite;
-	std::string charName;
-	std::string animName;
-	int frameIndex;
-	int width;
-	int height;
-	int numOfFrames;
-	int updateTime;
-	bool loop;
-
-	void load();
-
+	sf::Sprite		sprite;
+	sf::FloatRect	boundBox;
+	int				frameIndex;
+	int				width;
+	int				height;
+	int				numOfFrames;
+	int				updateTime;
+	bool			loop;
 };
 
 #endif

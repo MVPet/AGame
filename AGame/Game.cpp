@@ -1,12 +1,10 @@
 #include "Game.h"
 #include <iostream>
 
-Game::Game() : mWindow(sf::VideoMode(1280,720), "SFML Application"), playerSpeed(50.f), mIsMovingUp(false), mIsMovingDown(false), mIsMovingLeft(false), mIsMovingRight(false), TimePerFrame(sf::seconds(1.f / 60.f))
+Game::Game() : mWindow(sf::VideoMode(1280,720), "SFML Application"), TimePerFrame(sf::seconds(1.f / 60.f))
 {
-	textures.load(Textures::Yu, "Assets/YuStand.png");
-
-	mPlayer.setTexture(textures.get(Textures::Yu));
-	mPlayer.setPosition(100.f, 100.f);
+	p1 = new Yu();
+	p1->load();
 }
 
 void Game::run()
@@ -35,10 +33,10 @@ void Game::processEvents()
 		switch (event.type)
 		{
 			case sf::Event::KeyPressed:
-				handlePlayerInput(event.key.code, true);
+				p1->handlePlayerInput(event.key.code, true);
 				break;
 			case sf::Event::KeyReleased:
-				handlePlayerInput(event.key.code, false);
+				p1->handlePlayerInput(event.key.code, false);
 				break;
 			case sf::Event::Closed:
 				mWindow.close();
@@ -47,37 +45,14 @@ void Game::processEvents()
 	}
 }
 
-void Game::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
-{
-	if(key == sf::Keyboard::W)
-		mIsMovingUp = isPressed;
-	else if (key == sf::Keyboard::S)
-		mIsMovingDown = isPressed;
-	else if (key == sf::Keyboard::A)
-		mIsMovingLeft = isPressed;
-	else if (key == sf::Keyboard::D)
-		mIsMovingRight = isPressed;
-
-}
-
 void Game::update(sf::Time deltaTime)
 {
-	sf::Vector2f movement(0.f, 0.f);
-	if(mIsMovingUp)
-		movement.y -= playerSpeed;
-	if(mIsMovingDown)
-		movement.y += playerSpeed;
-	if(mIsMovingLeft)
-		movement.x -= playerSpeed;
-	if(mIsMovingRight)
-		movement.x += playerSpeed;
-
-	mPlayer.move(movement * deltaTime.asSeconds());
+	p1->update(deltaTime);
 }
 
 void Game::render()
 {
 	mWindow.clear();
-	mWindow.draw(mPlayer);
+	p1->draw(&mWindow);
 	mWindow.display();
 }
