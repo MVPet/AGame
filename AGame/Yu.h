@@ -11,6 +11,7 @@ public:
 	void	update(sf::Time);
 	void	draw(sf::RenderWindow*);
 	void	handlePlayerInput(sf::Keyboard::Key, bool);
+	void	applyFlip();
 
 private:
 	Animation*		anim;
@@ -18,6 +19,8 @@ private:
 	bool			isMovingRight;
 	float			velocity;
 	bool			grounded;
+	bool			crouched;
+	int				flip;
 	
 };
 #endif

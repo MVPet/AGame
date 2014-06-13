@@ -6,7 +6,7 @@
 
 namespace Textures
 {
-	enum ID { Stand, Background};
+	enum ID { Stand, Crouch, FWalk, BWalk, Background};
 }
 
 class TextureHolder
@@ -21,4 +21,4 @@ private:
 	std::map<Textures::ID, std::unique_ptr<sf::Texture>> mTextureMap;
 };
 
-#endif
+#endif // TEXTUREHOLDER.h

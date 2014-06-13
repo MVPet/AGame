@@ -4,6 +4,7 @@
 #include <SFML/System/Vector2.hpp>
 #include <SFML/Graphics.hpp>
 #include "TextureHolder.h"
+#include "AnimationHolder.h"
 #include "Animation.h"
 #include <memory>
 
@@ -15,14 +16,17 @@ public:
 	virtual void	draw(sf::RenderWindow*) =0;
 	virtual void	handlePlayerInput(sf::Keyboard::Key, bool) =0;
 	void			setVelocity(float vx);
+	void			applyFlip();
 	float			getVelocity() const;
 
 protected:
 	TextureHolder	textures;
+	AnimationHolder animations;
 	Animation*		anim;
 	float			velocity;
-	sf::FloatRect	boundBox;
 	bool			grounded;
+	bool			crouched;
+	int				flip;
 	sf::Vector2f	position;
 };
 #endif
