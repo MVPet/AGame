@@ -3,12 +3,14 @@
 Animation::Animation()
 {}
 
-Animation::Animation(Animations::ID id, int frames, float frameInterval, bool isLooping, sf::Texture& texture) {
+Animation::Animation(Animations::ID id, int frames, float frameInterval, bool isLooping, sf::Texture& texture) : frameIndex(0), updateTime(0), done(false)
+{
 	numOfFrames = frames;
-	frameIndex = 0;
-	updateTime = 0;
+	//frameIndex = 0;
+	//updateTime = 0;
 	loop = isLooping;
 	frameTime = frameInterval;
+	//done = false;
 
 	sprite.setTexture(texture);
 
@@ -38,17 +40,24 @@ void Animation::update(sf::Vector2f pos, sf::Time deltaTime) {
 			if (loop)
 				frameIndex = 0;
 			else
+			{
+				done = true;
 				frameIndex = numOfFrames - 1;
+			}
 		}
 	}
 
 	sprite.setTextureRect(sf::IntRect((frameIndex * width), 0, width, height));
 }
 
-void Animation::setScale(float x, float y)
+void Animation::resetAnimation()
 {
-	sprite.setScale(x, y);
+	done = false;
+	frameIndex = 0;
 }
+
+void Animation::setScale(float x, float y)
+{ sprite.setScale(x, y); }
 
 void Animation::draw(sf::RenderWindow* window)
 { window->draw(sprite); }
@@ -58,3 +67,9 @@ int Animation::getHeight()
 
 int Animation::getWidth()
 { return width; }
+
+bool Animation::isDone()
+{ return done; }
+
+bool Animation::getLoop()
+{ return loop; }

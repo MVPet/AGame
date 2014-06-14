@@ -20,7 +20,8 @@ private:
 	float			velocity;
 	bool			grounded;
 	bool			crouched;
-	int				flip;
+	bool			attacking;
+	float				flip;
 	
 };
 #endif

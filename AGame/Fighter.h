@@ -26,7 +26,8 @@ protected:
 	float			velocity;
 	bool			grounded;
 	bool			crouched;
-	int				flip;
+	bool			attacking;
+	float			flip;
 	sf::Vector2f	position;
 };
 #endif
