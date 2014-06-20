@@ -86,21 +86,25 @@
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="AnimationHolder.cpp" />
+    <ClCompile Include="City.cpp" />
     <ClCompile Include="Fighter.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Manager.cpp" />
-    <ClCompile Include="Text.cpp" />
+    <ClCompile Include="RoofNight.cpp" />
+    <ClCompile Include="School.cpp" />
     <ClCompile Include="TextureHolder.cpp" />
     <ClCompile Include="Yu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="AnimationHolder.h" />
+    <ClInclude Include="City.h" />
     <ClInclude Include="Fighter.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="Manager.h" />
-    <ClInclude Include="Test.hpp" />
+    <ClInclude Include="RoofNight.h" />
+    <ClInclude Include="School.h" />
+    <ClInclude Include="Stage.h" />
+    <ClInclude Include="StageList.h" />
     <ClInclude Include="TextureHolder.h" />
     <ClInclude Include="Yu.h" />
   </ItemGroup>

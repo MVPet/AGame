@@ -6,7 +6,7 @@
 class Yu : public Fighter
 {
 public:
-			Yu();
+			Yu(float x, float y);
 	void	load();
 	void	update(sf::Time);
 	void	draw(sf::RenderWindow*);
@@ -21,7 +21,7 @@ private:
 	bool			grounded;
 	bool			crouched;
 	bool			attacking;
-	float				flip;
+	float			flip;
 	
 };
-#endif
+#endif // Yu.h

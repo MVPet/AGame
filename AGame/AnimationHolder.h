@@ -15,4 +15,4 @@ private:
 	std::map<Animations::ID, Animation*> AnimationMap;
 };
 
-#endif // ANIMATIONHOLDER.h
+#endif // AnimationHolder.h

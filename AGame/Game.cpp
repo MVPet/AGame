@@ -1,12 +1,17 @@
 #include "Game.h"
 #include <iostream>
 
+// Class will not stay this way forever, especially once menus are added in
+
+// default constructor
 Game::Game() : mWindow(sf::VideoMode(1280,720), "SFML Application"), TimePerFrame(sf::seconds(1.f / 60.f))
 {
-	p1 = new Yu();
-	p1->load();
+	stage = new RoofNight();
+	stage->load();
 }
 
+// our "infinte" loop that starts the game clock and loops while the window is open
+// updates the game ~60fps
 void Game::run()
 {
 	sf::Clock clock;
@@ -25,6 +30,7 @@ void Game::run()
 	}
 }
 
+// process the events occuring inside the game
 void Game::processEvents()
 {
 	sf::Event event;
@@ -33,10 +39,12 @@ void Game::processEvents()
 		switch (event.type)
 		{
 			case sf::Event::KeyPressed:
-				p1->handlePlayerInput(event.key.code, true);
+				//p1->handlePlayerInput(event.key.code, true);
+				stage->handlePlayerInput(event.key.code, true);
 				break;
 			case sf::Event::KeyReleased:
-				p1->handlePlayerInput(event.key.code, false);
+				//p1->handlePlayerInput(event.key.code, false);
+				stage->handlePlayerInput(event.key.code, false);
 				break;
 			case sf::Event::Closed:
 				mWindow.close();
@@ -47,12 +55,13 @@ void Game::processEvents()
 
 void Game::update(sf::Time deltaTime)
 {
-	p1->update(deltaTime);
+	stage->update(deltaTime);
 }
 
+// render the game tot he screen, by clearing the window and drawing everything
 void Game::render()
 {
 	mWindow.clear();
-	p1->draw(&mWindow);
+	stage->draw(&mWindow);
 	mWindow.display();
 }

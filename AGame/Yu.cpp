@@ -1,12 +1,14 @@
 #include "Yu.h"
 #include <iostream>
 
-Yu::Yu() : isMovingLeft(false), isMovingRight(false), velocity(100.f), grounded(true), crouched(false), flip(1.f), attacking(false)
+// default constructor
+Yu::Yu(float x, float y) : isMovingLeft(false), isMovingRight(false), velocity(100.f), grounded(true), crouched(false), flip(1.f), attacking(false)
 {
-	position.x = 100.f;
-	position.y = 250.f;
+	position.x = x;
+	position.y = y;
 }
 
+// loads all the animations we'll need for Yu
 void Yu::load()
 {
 	textures.load(Textures::Stand, "Assets/YuStand.png");
@@ -42,6 +44,8 @@ void Yu::load()
 	anim = animations.get(Animations::Stand);
 }
 
+// what we'll do with the inputs, if an attack key, attack, if move, move, etc.
+// Could be spiced up by having a Enum for certain controls (IE LightAttack = L), which would allow for customizable controls, but I'll cross that bridge when I get there
 void Yu::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
 {
 	if(!attacking)
@@ -100,6 +104,7 @@ void Yu::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
 	}
 }
 
+// our update loop per frame, handles what Yu will do depending on the state he's in
 void Yu::update(sf::Time deltaTime)
 {
 	applyFlip();
@@ -145,6 +150,7 @@ void Yu::draw(sf::RenderWindow* window)
 	anim->draw(window);
 }
 
+// flips the character
 void Yu::applyFlip()
 {
 	anim->setScale(flip, 1.f);

@@ -1,16 +1,15 @@
 #include "Animation.h"
 
+// Default constructor
 Animation::Animation()
 {}
 
+// Specialized constructor with info about the Animation
 Animation::Animation(Animations::ID id, int frames, float frameInterval, bool isLooping, sf::Texture& texture) : frameIndex(0), updateTime(0), done(false)
 {
 	numOfFrames = frames;
-	//frameIndex = 0;
-	//updateTime = 0;
 	loop = isLooping;
 	frameTime = frameInterval;
-	//done = false;
 
 	sprite.setTexture(texture);
 
@@ -25,6 +24,9 @@ Animation::Animation(Animations::ID id, int frames, float frameInterval, bool is
 	boundBox.height = sprite.getLocalBounds().height;
 }
 
+// How the Animation updates per frame
+// Goes throught the frames of the animation depending on how long each frame is
+// Whole Animation system could be improved with a series of Frame objects containing detailed info about each frame, but I'll cross that bridge when we get there
 void Animation::update(sf::Vector2f pos, sf::Time deltaTime) {
 
 	sprite.setPosition(pos);
@@ -50,6 +52,7 @@ void Animation::update(sf::Vector2f pos, sf::Time deltaTime) {
 	sprite.setTextureRect(sf::IntRect((frameIndex * width), 0, width, height));
 }
 
+// Resets the Animation as if it was never played
 void Animation::resetAnimation()
 {
 	done = false;

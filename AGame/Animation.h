@@ -7,20 +7,20 @@
 
 namespace Animations
 {
-	enum ID { Stand, Crouch, FWalk, BWalk, LAttack, MAttack, HAttack, CLAttack, CMAttack, CHAttack };
+	enum ID { Stand, Crouch, FWalk, BWalk, LAttack, MAttack, HAttack, CLAttack, CMAttack, CHAttack, Background };
 }
 
 class Animation {
 
 public:
 			Animation();
-			Animation(Animations::ID, int, float, bool, sf::Texture& texture);
+			Animation(Animations::ID id, int frames, float frameInterval, bool isLooping, sf::Texture& texture);
 	int		getWidth();
 	int		getHeight();
 	bool	isDone();
 	bool	getLoop();
 	void	update(sf::Vector2f pos, sf::Time deltaTime);
-	void	draw(sf::RenderWindow*);
+	void	draw(sf::RenderWindow* window);
 	void	setScale(float x, float y);
 	void	resetAnimation();
 
@@ -40,4 +40,4 @@ private:
 	bool			done;
 };
 
-#endif
+#endif // Animation.h

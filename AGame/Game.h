@@ -3,7 +3,9 @@
 
 #include <SFML/Graphics.hpp>
 #include "TextureHolder.h"
+#include "StageList.h"
 #include "Yu.h"
+
 
 class Game
 {
@@ -13,13 +15,12 @@ public:
 
 private:
 	void	processEvents();
-	//void	handlePlayerInput(sf::Keyboard::Key , bool);
 	void	update(sf::Time);
 	void	render();
 
 private:
 	sf::RenderWindow	mWindow;
-	Fighter*			p1;
+	Stage*				stage;
 	bool				mIsMovingUp;
 	bool				mIsMovingDown;
 	bool				mIsMovingLeft;
@@ -29,4 +30,4 @@ private:
 
 };
 
-#endif
+#endif // Game.h
