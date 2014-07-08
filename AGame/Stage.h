@@ -14,7 +14,7 @@ public:
 	virtual void	load() =0;
 	virtual void	update(sf::Time) =0;
 	virtual void	draw(sf::RenderWindow*) =0;
-	virtual void	handlePlayerInput(sf::Keyboard::Key, bool) =0;
+	virtual void	handlePlayerInput() =0;
 
 protected:
 	TextureHolder	textures;

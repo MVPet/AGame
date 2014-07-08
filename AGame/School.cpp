@@ -6,7 +6,7 @@ School::School()
 	position.x = 0.f;
 	position.y = 0.f;
 
-	p1 = new Yu(100.f, 250.f);
+	p1 = new Yu(100.f, 700.f, false);
 	p1->load();
 }
 
@@ -15,9 +15,12 @@ School::School()
 void School::load()
 {
 	textures.load(Textures::Background, "Assets/School.png");
-	animations.load(Animations::Background, 1, .1f, true, textures.get(Textures::Background));
+	animations.load(Animations::Background, 1, .1f, true, textures.get(Textures::Background), 0, 0, 0, 0, 0, 0, 0, 0);
 
 	anim = animations.get(Animations::Background);
+
+	position.x = 0.f;
+	position.y = anim->getHeight();
 }
 
 // our update loop per frame
@@ -25,7 +28,7 @@ void School::load()
 void School::update(sf::Time deltaTime)
 {
 	anim->update(position, deltaTime);
-	p1->update(deltaTime);
+	p1->update(deltaTime, p1);
 }
 
 void School::draw(sf::RenderWindow* window)
@@ -38,5 +41,5 @@ void School::draw(sf::RenderWindow* window)
 // only player 1 is here now, but that will change soon
 void School::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
 {
-	p1->handlePlayerInput(key, isPressed);
+	p1->handlePlayerInput();
 }

@@ -8,7 +8,7 @@
 class AnimationHolder
 {
 public:
-	void		load(Animations::ID id, int frames, float frameInterval, bool isLooping, sf::Texture& texture);
+	void		load(Animations::ID id, int frames, float frameInterval, bool isLooping, sf::Texture& texture, float bTop, float bLeft, float bHeight, float bWidth, float aTop, float aLeft, float aHeight, float aWidth);
 	Animation*	get(Animations::ID id);
 
 private:

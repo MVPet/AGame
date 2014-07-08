@@ -11,11 +11,12 @@ public:
 	void	load();
 	void	update(sf::Time);
 	void	draw(sf::RenderWindow*);
-	void	handlePlayerInput(sf::Keyboard::Key, bool);
+	void	handlePlayerInput();
 
 private:
 	Animation*	anim;
 	Fighter*	p1;
+	Fighter*	p2;
 };
 
 #endif // City.h

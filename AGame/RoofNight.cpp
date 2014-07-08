@@ -3,10 +3,7 @@
 // Default constructor
 RoofNight::RoofNight()
 {
-	position.x = 0.f;
-	position.y = 0.f;
-
-	p1 = new Yu(100.f, 250.f);
+	p1 = new Yu(100.f, 700.f, false);
 	p1->load();
 }
 
@@ -15,9 +12,12 @@ RoofNight::RoofNight()
 void RoofNight::load()
 {
 	textures.load(Textures::Background, "Assets/RoofNight.png");
-	animations.load(Animations::Background, 1, .1f, true, textures.get(Textures::Background));
+	animations.load(Animations::Background, 1, .1f, true, textures.get(Textures::Background), 0, 0, 0, 0, 0, 0, 0, 0);
 
 	anim = animations.get(Animations::Background);
+
+	position.x = 0.f;
+	position.y = anim->getHeight();
 }
 
 // our update loop per frame
@@ -25,7 +25,7 @@ void RoofNight::load()
 void RoofNight::update(sf::Time deltaTime)
 {
 	anim->update(position, deltaTime);
-	p1->update(deltaTime);
+	p1->update(deltaTime, p1);
 }
 
 void RoofNight::draw(sf::RenderWindow* window)
@@ -38,5 +38,5 @@ void RoofNight::draw(sf::RenderWindow* window)
 // only player 1 is here now, but that will change soon
 void RoofNight::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
 {
-	p1->handlePlayerInput(key, isPressed);
+	p1->handlePlayerInput();
 }

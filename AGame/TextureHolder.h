@@ -6,7 +6,7 @@
 
 namespace Textures
 {
-	enum ID { Stand, Crouch, FWalk, BWalk, LAttack, MAttack, HAttack, CLAttack, CMAttack, CHAttack, Background};
+	enum ID { Stand, Crouch, FWalk, BWalk, LAttack, MAttack, HAttack, CLAttack, CMAttack, CHAttack, Background, Hit, CHit, Guard, CGuard, Intro, Win, Lose};
 }
 
 class TextureHolder

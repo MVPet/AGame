@@ -6,7 +6,7 @@
 // default constructor
 Game::Game() : mWindow(sf::VideoMode(1280,720), "SFML Application"), TimePerFrame(sf::seconds(1.f / 60.f))
 {
-	stage = new RoofNight();
+	stage = new City();
 	stage->load();
 }
 
@@ -23,7 +23,7 @@ void Game::run()
 		while (timeSinceLastUpdate > TimePerFrame)
 		{
 			timeSinceLastUpdate -= TimePerFrame;
-			processEvents();
+			stage->handlePlayerInput();
 			update(TimePerFrame);
 		}
 		render();
@@ -38,17 +38,9 @@ void Game::processEvents()
 	{
 		switch (event.type)
 		{
-			case sf::Event::KeyPressed:
-				//p1->handlePlayerInput(event.key.code, true);
-				stage->handlePlayerInput(event.key.code, true);
-				break;
-			case sf::Event::KeyReleased:
-				//p1->handlePlayerInput(event.key.code, false);
-				stage->handlePlayerInput(event.key.code, false);
-				break;
 			case sf::Event::Closed:
 				mWindow.close();
-					break;
+				break;
 		}
 	}
 }
